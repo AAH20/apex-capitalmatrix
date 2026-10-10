@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apex-capitalmatrix"
+version = "1.0.0"
+description = "Sovereign NVIDIA VC Alliance Diligence & Enterprise Connect Air-Gapped PoC Operating System (US, EU, Asia)"
+readme = "README.md"
+authors = [{ name = "Ahmed Hassan", email = "aah@a2zsoc.com" }]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+keywords = [
+    "nvidia-inception",
+    "capital-connect",
+    "enterprise-connect",
+    "vc-alliance",
+    "due-diligence",
+    "proof-of-compute",
+    "air-gap",
+    "zero-egress",
+    "tensorrt-llm",
+    "nvidia-nim",
+    "finops",
+    "eu-ai-act",
+    "sovereign-ai",
+    "zero-dependency",
+]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+capitalmatrix = "apex_capitalmatrix.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/AAH20/apex-capitalmatrix"
+Repository = "https://github.com/AAH20/apex-capitalmatrix"
+Documentation = "https://github.com/AAH20/apex-capitalmatrix#readme"
+Issues = "https://github.com/AAH20/apex-capitalmatrix/issues"
