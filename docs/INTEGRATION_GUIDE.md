@@ -1,10 +1,10 @@
 # Enterprise Integration Guide: Apex_CapitalMatrix
 
-## Integrating Cloudflare Clef, Hermes Paperclip, Control Plane & FlowForge
+## Adapter Stubs: Cloudflare Clef, Hermes Paperclip, Control Plane & FlowForge
 
 ```
 Classification:   Production Enterprise Integration Specification
-Frameworks:       Clef • Paperclip Company OS • aicontrol • flowforge • Aerial 6G
+Adapter Names:    Clef • Paperclip Company OS • aicontrol • flowforge • Aerial 6G (local stubs)
 Runtime:          Pure Python Standard Library (Zero External Dependencies)
 ```
 
@@ -20,12 +20,12 @@ graph TD
     Orchestrator["ApexCapitalMatrixOrchestrator<br/>Central Operational Bus"]
 
     subgraph Adapters ["Ecosystem Integration Adapters"]
-        Clef["Cloudflare Clef Replicator<br/>Sub-100µs Global Edge Consensus"]
+        Clef["Clef Edge Replicator (stub)<br/>In-Memory, Hardcoded Status Label"]
         Paperclip["Hermes Paperclip Adapter<br/>Micro-USD Budget & ActionLedger Receipts"]
-        ControlPlane["Enterprise AI Control Plane ('aicontrol')<br/>Kubernetes GPU FinOps Telemetry"]
-        FlowForge["Enterprise AI Integration Platform ('flowforge')<br/>Durable ERP Transaction Simulation"]
-        Aerial["NVIDIA Aerial 6G Connector<br/>Sub-5ms URLLC Latency Telemetry"]
-        Alibaba["Alibaba Open Code Review<br/>Pre-Flight AST & Credential Scanner"]
+        ControlPlane["Control Plane FinOps Adapter (stub)<br/>Local FinOps Logging, No Cluster"]
+        FlowForge["FlowForge Replay Adapter (stub)<br/>In-Memory ERP Dry-Run"]
+        Aerial["Aerial 6G Connector (stub)<br/>Caller-Supplied Latency Check"]
+        Alibaba["Code Review Scanner (self-contained)<br/>AST + Regex, No Alibaba Dependency"]
     end
 
     Orchestrator --> Clef
@@ -87,24 +87,24 @@ print(memo_markdown)
 
 ## 3. Integration Specifications
 
-### 3.1 Cloudflare Clef Edge Consensus (`ClefEdgeReplicator`)
-- **Purpose**: Synchronizes verified diligence packets and PoC certificates across 330+ Cloudflare edge nodes with monotonic sequence numbers and deterministic SHA-256 digests.
-- **Fail-Safe**: In-memory ring buffer with monotonic sequence numbers and zero network latency overhead.
+### 3.1 Clef Edge Replicator (`ClefEdgeReplicator`) — local stub
+- **Purpose**: Stores verified diligence packets and PoC certificates in an in-process Python dict with monotonic sequence numbers and deterministic SHA-256 digests. No Cloudflare edge nodes are contacted; the `COMMITTED_SUB_100US` status is a hardcoded string.
+- **Fail-Safe**: In-memory dict with monotonic sequence numbers; no network layer exists. Real Cloudflare Clef edge consensus is roadmap.
 
-### 3.2 Hermes Paperclip Budget Governor (`PaperclipBudgetGovernor`)
-- **Purpose**: Enforces micro-USD budget ceilings (e.g., \$0.125 per diligence run, \$0.085 per PoC verification).
-- **Audit Trail**: Generates tamper-evident `ActionLedger` receipts containing cumulative spend, remaining balance, and cryptographic digests.
+### 3.2 Paperclip Budget Governor (`PaperclipBudgetGovernor`) — self-contained
+- **Purpose**: Enforces micro-USD budget ceilings (e.g., \$0.125 per diligence run, \$0.085 per PoC verification). No `@paperclipai/hermes-paperclip-adapter` package exists or is used.
+- **Audit Trail**: Generates SHA-256 `ActionLedger` receipts containing cumulative spend, remaining balance, and digests (integrity hashes, not signatures).
 
-### 3.3 Enterprise AI Production Control Plane (`ControlPlaneFinOpsAdapter`)
-- **Repository**: [`https://github.com/AAH20/enterprise-ai-production-control-plane`](https://github.com/AAH20/enterprise-ai-production-control-plane) (`aicontrol`).
-- **Telemetry**: Logs GPU count, node pool, allocation hours, and dollar expenditure for Kubernetes-based DGX SuperPOD environments.
+### 3.3 Control Plane FinOps Adapter (`ControlPlaneFinOpsAdapter`) — local stub
+- **Repository**: Names [`https://github.com/AAH20/enterprise-ai-production-control-plane`](https://github.com/AAH20/enterprise-ai-production-control-plane) (`aicontrol`), but no code from it is imported and no network calls are made.
+- **Telemetry**: Logs caller-supplied GPU count, node pool, allocation hours, and dollar expenditure to an in-memory list; it does not connect to a Kubernetes cluster.
 
-### 3.4 Enterprise AI Integration Platform (`FlowForgeSimulationReplayAdapter`)
-- **Repository**: [`https://github.com/AAH20/enterprise-ai-integration-platform`](https://github.com/AAH20/enterprise-ai-integration-platform) (`flowforge`).
-- **Safety**: Dry-runs ERP actions against a synthetic shadow twin, verifying idempotency and guaranteed rollback before live production mutations.
+### 3.4 FlowForge Simulation Replay Adapter (`FlowForgeSimulationReplayAdapter`) — local stub
+- **Repository**: Names [`https://github.com/AAH20/enterprise-ai-integration-platform`](https://github.com/AAH20/enterprise-ai-integration-platform) (`flowforge`), but no code from it is imported and no network calls are made.
+- **Safety**: Returns an in-memory dry-run record with `rollback_guaranteed=True` and `production_impact="ZERO_MUTATION_DRY_RUN_ISOLATED"`; it does not contact SAP S/4HANA, Salesforce CRM, or Oracle ERP.
 
-### 3.5 NVIDIA Aerial 6G Connector (`Aerial6GConnector`)
-- **Purpose**: Monitors sub-5ms Ultra-Reliable Low-Latency Communication (URLLC) decision SLAs for edge telecommunications and autonomous robotics deployments.
+### 3.5 Aerial 6G Connector (`Aerial6GConnector`) — local stub
+- **Purpose**: Records a caller-supplied latency value and checks it against a 5ms SLA threshold. It does not connect to the NVIDIA Aerial 6G SDK, TensorRT-LLM, or NIM.
 
-### 3.6 Alibaba Open Code Review Adapter (`AlibabaCodeReviewAdapter`)
-- **Purpose**: Pre-flight AST static analysis inspecting for dynamic execution risks (`eval`, `exec`), unsafe deserialization, and hardcoded credential patterns.
+### 3.6 Code Review Adapter (`AlibabaCodeReviewAdapter`) — self-contained
+- **Purpose**: Pre-flight Python AST + regex static analysis inspecting for dynamic execution risks (`eval`, `exec`, `pickle.loads`, `os.system`, `subprocess.Popen`) and hardcoded credential patterns. No Alibaba/AnyAgent dependency exists.

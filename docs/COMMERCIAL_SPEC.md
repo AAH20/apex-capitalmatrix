@@ -45,9 +45,9 @@ flowchart LR
         S2["Zero-Egress Air-Gap Proxy & Synthetic ERP Shadow Replay"]
     end
 
-    subgraph Result ["Business Outcome"]
-        R1["Instant VC Alliance Technical Sign-Off (< 48 Hours)"]
-        R2["Enterprise Connect PoC Approved in 48 Hours"]
+    subgraph Result ["Engine Output (not a measured timeline)"]
+        R1["VC Diligence Packet (SHA-256 hashed)"]
+        R2["Enterprise PoC Verdict Flag (GREENLIGHT_48H)"]
     end
 
     P1 --> S1 --> R1
@@ -62,9 +62,9 @@ flowchart LR
 
 | Operational Metric | Traditional Process | With Apex_CapitalMatrix | Strategic Advantage |
 | :--- | :--- | :--- | :--- |
-| **Capital Connect Technical Review** | 4 to 6 Weeks | **< 60 Seconds** | Standardized, tamper-evident SHA-256 diligence packet |
-| **Proof-of-Compute (MFU Verification)** | Subjective Claims | **Formal Mathematical MFU Audit** | Formally disproves third-party API wrapper suspicion |
-| **Enterprise PoC Security Review** | 9 to 14 Months | **< 48 Hours** | Zero-egress certification & non-destructive ERP dry-run |
+| **Capital Connect Technical Review** | 4 to 6 Weeks | **Sub-second local run** | Standardized, tamper-evident SHA-256 diligence packet (no measured wall-clock reduction) |
+| **Proof-of-Compute (MFU Verification)** | Subjective Claims | **Formula-Based MFU Calculation** | Computes MFU from caller-supplied throughput; does not by itself disprove API-wrapper status |
+| **Enterprise PoC Security Review** | 9 to 14 Months | **Boolean verdict flag** | Emits a `GREENLIGHT_48H` flag from two boolean checks; not a measured approval timeline |
 | **GAAP ASC 606 Revenue Audit** | \$75k - \$150k Advisory Fee | **Autonomous Algorithmic Audit** | Reconciles pilot fees vs true recurring SaaS revenue |
 | **Unabsorbed GPU Lease Drag Visibility** | Discovered Post-Close | **Pre-Investment Actuarial Sizing** | Transparently quantifies cloud contract overhang |
 | **Pan-Asia Sovereign Compliance** | Fragmented Legal Memos | **Automated 5-Country Matrix** | Instant verification for Japan, Singapore, GCC, Korea, India |
@@ -77,6 +77,6 @@ flowchart LR
 2. **VC Alliance Standard Adoption**: Tier-1 funds can mandate the `CapitalConnectDiligencePacket` as a standardized prerequisite for technical due diligence screening.
 3. **Repository Embed Badges**:
    ```markdown
-   [![NVIDIA Capital Connect Verified](https://img.shields.io/badge/Capital_Connect-Verified_MFU_76%25-green.svg)](https://github.com/AAH20/apex-capitalmatrix)
+   [![NVIDIA Capital Connect Diligence](https://img.shields.io/badge/Capital_Connect-SHA--256_Diligence_Packet-green.svg)](https://github.com/AAH20/apex-capitalmatrix)
    [![Enterprise Connect Sovereign Compliant](https://img.shields.io/badge/Enterprise_Connect-Zero_Egress_APAC_GCC-blue.svg)](https://github.com/AAH20/apex-capitalmatrix)
    ```

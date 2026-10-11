@@ -1,4 +1,4 @@
-"""Alibaba Open Code Review & AnyAgent Integration Adapter.
+"""Self-contained Code Review Adapter (no Alibaba/AnyAgent dependency).
 
 Employs static AST pattern matching to perform automated pre-flight security
 and architectural reviews, verifying that code is free from exposed credentials,

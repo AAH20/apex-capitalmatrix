@@ -1,7 +1,8 @@
-"""Cloudflare Clef Distributed Edge Consensus Adapter.
+"""Clef Edge Replication Adapter (local, in-memory stub).
 
-Synchronizes verified Capital Connect diligence packets and Enterprise Connect PoC
-certificates across 330+ Cloudflare edge data centers with sub-100µs state replication.
+Stores verified Capital Connect diligence packets and Enterprise Connect PoC
+certificates in an in-process dict; no Cloudflare edge network is contacted and the
+"sub-100µs" consensus status is a hardcoded string (real Clef integration is roadmap).
 Zero external dependencies (pure Python 3.9+ standard library only).
 """
 

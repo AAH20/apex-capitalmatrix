@@ -1,7 +1,8 @@
 """Enterprise AI Production Control Plane Adapter ('aicontrol').
 
-Native integration with 'https://github.com/AAH20/enterprise-ai-production-control-plane'.
-Tracks Kubernetes GPU FinOps telemetry, pod allocations, and multicloud inference routing.
+Local, in-memory adapter named after 'https://github.com/AAH20/enterprise-ai-production-control-plane'.
+Logs caller-supplied GPU FinOps telemetry and allocation records; no network calls or imports
+from that project (integration is roadmap).
 Zero external dependencies (pure Python 3.9+ standard library only).
 """
 
@@ -13,7 +14,7 @@ from typing import Any, Dict, List, Optional
 
 
 class ControlPlaneFinOpsAdapter:
-    """Manages Kubernetes GPU FinOps accounting and multicloud cluster routing."""
+    """Logs caller-supplied GPU FinOps allocations and aggregates spend (in-memory)."""
 
     def __init__(self, cluster_name: str = "k8s-dgx-superpod-us-east-1"):
         self.cluster_name = cluster_name

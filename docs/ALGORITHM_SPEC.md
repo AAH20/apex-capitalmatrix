@@ -50,7 +50,7 @@ $$\mathcal{S}_{\text{wrapper}} = w_{\text{mfu}} \cdot \mathbb{I}(\text{MFU} < 20
 
 ## 2. Atlas FinOps & GAAP ASC 606 Revenue Audit
 
-Integrates the double-entry accounting models from `project-atlas-due-diligence` and the compute lease liability models from `tech-balance-sheet` and `ma_vdr_diligence_os`.
+Re-implements locally (no imports) ASC 606-style revenue accounting and compute lease-liability formulas; the names `project-atlas-due-diligence`, `tech-balance-sheet`, and `ma_vdr_diligence_os` are referenced only in docstrings.
 
 ### 2.1 GAAP ASC 606 Revenue Reconciliation
 
@@ -80,7 +80,7 @@ $$\text{Compute ROIC} = \frac{\text{ARR}_{\text{reconciled}}}{\text{Cost}_{\text
 
 ## 3. Sovereign Air-Gap Zero-Egress Formal Verification
 
-For Asian Enterprise Connect deployments (Japan, Singapore, GCC, South Korea, India), the on-premise proxy guarantees that zero customer tokens leave the local enclave boundary:
+For Asian Enterprise Connect deployments (Japan, Singapore, GCC, South Korea, India), the proxy models a zero-egress boundary (a destination-allowlist string check plus PII redaction; it does not intercept OS-level network traffic):
 
 ```mermaid
 sequenceDiagram
@@ -103,14 +103,15 @@ sequenceDiagram
 ### 3.1 PII & Secret Redaction Engine
 
 Scans and masks credentials with $O(N)$ regex passes:
-* Credit Cards (Luhn candidates)
-* Corporate Email addresses
-* Cloud API Keys (`AKIA...`, `sk-...`, `ghp-...`)
-* Private cryptographic keys (`-----BEGIN PRIVATE KEY-----`)
+* Credit Cards (16-digit patterns; no Luhn validation)
+* Email addresses
+* JWT / Bearer tokens (`eyJ...`)
+* Cloud API Keys (`AKIA...`, `ABIA...`, `ACCA...`, `ASIA...`)
+* Private cryptographic keys (`-----BEGIN ... KEY-----`)
 
-### 3.2 Outbound Socket Gating
+### 3.2 Egress Destination Gating
 
-Strictly confines egress to whitelist destinations (`127.0.0.1`, `localhost`, `*.internal`). Any external DNS or TCP socket request is intercepted, blocked, and appended to the tamper-evident audit ledger.
+Compares a caller-supplied destination string against a hardcoded sovereign allowlist (`127.0.0.1`, `localhost`, `::1`, `sovereign.local`, `*.internal`). A non-allowlisted destination is flagged and the attempt is appended to the audit log. This is a string comparison only — no OS-level DNS or TCP socket is intercepted.
 
 ---
 

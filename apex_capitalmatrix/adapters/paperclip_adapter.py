@@ -1,6 +1,6 @@
 """Hermes Paperclip Adapter: Company OS Micro-USD Budget Governor.
 
-Native integration with '@paperclipai/hermes-paperclip-adapter'.
+Self-contained implementation; no '@paperclipai/hermes-paperclip-adapter' package exists or is used.
 Enforces micro-USD budget ceilings per due-diligence run and enterprise PoC simulation,
 issuing tamper-evident SHA-256 ActionLedger receipts.
 Zero external dependencies (pure Python 3.9+ standard library only).

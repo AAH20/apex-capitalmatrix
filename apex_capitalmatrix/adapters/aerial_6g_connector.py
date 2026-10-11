@@ -1,8 +1,7 @@
-"""NVIDIA AI Aerial 6G URLLC Decision Connector.
+"""Aerial 6G URLLC Decision Connector (local, in-memory stub).
 
-Connects to NVIDIA Aerial 6G SDK, TensorRT-LLM, and NIM architectures.
-Verifies sub-5ms Ultra-Reliable Low-Latency Communication (URLLC) decision SLAs
-for telecom edge networks, autonomous robotics, and edge reasoning clusters.
+Records a caller-supplied latency and checks it against a 5ms threshold. Does not
+connect to the NVIDIA Aerial 6G SDK, TensorRT-LLM, or NIM (integration is roadmap).
 Zero external dependencies (pure Python 3.9+ standard library only).
 """
 
@@ -13,7 +12,7 @@ from typing import Any, Dict, List, Optional
 
 
 class Aerial6GConnector:
-    """Monitors sub-5ms URLLC decision SLAs on NVIDIA Aerial edge stacks."""
+    """Checks caller-supplied decision latency against a 5ms URLLC SLA threshold."""
 
     def __init__(self, cell_id: str = "aerial-6g-edge-tokyo-01", max_sla_ms: float = 5.0):
         self.cell_id = cell_id

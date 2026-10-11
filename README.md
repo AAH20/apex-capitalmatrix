@@ -18,8 +18,8 @@ For the 18,000+ AI startups in the **NVIDIA Inception Program**, commercial scal
 2. **Enterprise Connect (Asia-Pacific & GCC)**: Major conglomerates (NTT, SoftBank, Singtel, Keppel, Aramco, Reliance, Samsung) operate under strict sovereign data mandates (Japan APPI/METI, Singapore MAS TRM, Saudi SDAIA, Korea PIPA, India DPDP). Startups face a **9 to 14 month PoC freeze** because enterprises refuse multi-tenant cloud API egress and fear destructive agent tool mutations in production ERP databases.
 
 **Apex_CapitalMatrix** (`apex-capitalmatrix`) resolves this dual dilemma by delivering a sovereign, zero-dependency, pure Python standard library runtime that:
-* Generates an immutable, cryptographically signed **"NVIDIA Capital Connect Diligence Packet"** verifying true hardware saturation ($> 65\%$ MFU), Token-per-Dollar throughput, GAAP ASC 606 reconciled revenue, and EU AI Act compliance.
-* Deploys an on-premise **Zero-Egress Sovereign Air-Gap Proxy** with non-destructive synthetic ERP transaction simulation, compressing enterprise PoC security approvals from 9 months to **under 48 hours**.
+* Generates a tamper-evident (SHA-256 hashed) **"NVIDIA Capital Connect Diligence Packet"** reporting computed Model FLOPs Utilization (MFU), Token-per-Dollar throughput, GAAP ASC 606 reconciled revenue, and EU AI Act compliance. The SHA-256 digest is an integrity hash, not a cryptographic signature (no signing key or verification step exists).
+* Provides an in-process **Zero-Egress Sovereign Air-Gap Proxy** model with in-memory synthetic ERP dry-run simulation; its approval outcome is a boolean-derived `GREENLIGHT_48H` verdict flag, not a measured approval timeline.
 
 ---
 
@@ -34,10 +34,10 @@ graph TD
 
     subgraph Capital_Connect ["CAPITAL CONNECT (US & EU VC ALLIANCE)"]
         direction TB
-        MFU["Hardware Saturation & MFU Verifier<br/>(Calculates True TFLOPS & Disproves API Wrapper)"]
-        Atlas["FinOps Atlas Actuary (project-atlas-due-diligence)<br/>(GAAP ASC 606 & Unabsorbed GPU Lease Drag)"]
+        MFU["Hardware Saturation & MFU Verifier<br/>(Computes MFU & Wrapper Suspicion Score from Inputs)"]
+        Atlas["FinOps Atlas Actuary<br/>(GAAP ASC 606 & Unabsorbed GPU Lease Drag)"]
         EU["EU AI Act & IP License Scanner<br/>(Articles 50/53 & Copyleft AGPL/GPL Detection)"]
-        VCPacket["Signed VC Diligence Packet<br/>(SHA-256 Verified Diligence Ledger)"]
+        VCPacket["SHA-256 Hashed VC Diligence Packet<br/>(Integrity Digest, Not a Signature)"]
         MFU --> VCPacket
         Atlas --> VCPacket
         EU --> VCPacket
@@ -45,10 +45,10 @@ graph TD
 
     subgraph Enterprise_Connect ["ENTERPRISE CONNECT (ASIA CONGLOMERATES)"]
         direction TB
-        AirGap["Sovereign Zero-Egress Proxy<br/>(Intercepts Outbound Sockets & Masks PII Secrets)"]
-        Replay["FlowForge Durable ERP Twin (flowforge)<br/>(Non-Destructive SAP / Oracle Replay Safety)"]
+        AirGap["Sovereign Zero-Egress Proxy<br/>(Egress Destination Allowlist & PII Redaction)"]
+        Replay["FlowForge ERP Simulation Adapter<br/>(In-Memory Dry-Run, Rollback Flag)"]
         PanAsia["Pan-Asia Compliance Matrix<br/>(Japan APPI, Singapore MAS, Saudi SDAIA, Korea, India)"]
-        PoCCert["48-Hour Enterprise Security Approval<br/>(Formal Zero-Egress Verification Certificate)"]
+        PoCCert["Enterprise PoC Verdict Certificate<br/>(Boolean Zero-Egress + Pan-Asia Checks)"]
         AirGap --> PoCCert
         Replay --> PoCCert
         PanAsia --> PoCCert
@@ -69,18 +69,18 @@ graph TD
 * Compares achieved forward-pass FLOPs ($\text{FLOPs} = 2 \cdot P \cdot T_{\text{sec}}$) against cluster capacity to calculate true MFU percentage.
 * Evaluates KV-cache hit rates and latency jitter to formally calculate a **Wrapper Suspicion Score** ($0.0$ to $1.0$).
 
-### 2. FinOps Atlas Actuary (Atlas & Tech-Balance-Sheet Foundation)
-* Integrates the forensic accounting principles of **`project-atlas-due-diligence`** to reconcile reported ARR against GAAP ASC 606 by isolating disguised professional services.
-* Models compute balance sheet liabilities from **`tech-balance-sheet`**, calculating cash drag from unabsorbed GPU cluster lease commitments (e.g., 128 contracted nodes with sub-50% utilization).
+### 2. FinOps Atlas Actuary
+* Re-implements a local ASC 606-style reconciliation (reported ARR minus identified misclassified services); the name **`project-atlas-due-diligence`** is referenced only in docstrings and no code is imported from it.
+* Computes cash drag from unabsorbed GPU cluster lease commitments (e.g., 128 contracted nodes with sub-50% utilization); the name **`tech-balance-sheet`** is referenced only in docstrings and no code is imported from it.
 * Calculates EBITDA valuation haircuts and structures Reps & Warranties indemnity escrow holdbacks.
 
 ### 3. EU AI Act & IP License Scanner
-* Audits compliance against **EU AI Act Articles 50, 52, and 53** (transparency, synthetic watermarking, and training summary disclosures).
-* Scans codebase AST and dependencies for viral copyleft contamination (`AGPL-3.0`, `GPL-2.0`, `SSPL`) that would compromise commercial IP ownership.
+* Audits compliance against **EU AI Act Articles 50 and 53** (transparency/synthetic watermarking and training-summary disclosures); Article 52 is not implemented.
+* Regex-matches a caller-supplied dependency list for viral copyleft license strings (`AGPL-3.0`, `GPL-2.0`, `SSPL`) that would compromise commercial IP ownership. It does not parse a codebase AST.
 
 ### 4. Sovereign Air-Gap Zero-Egress Proxy
-* Enforces an air-gapped on-premise interception proxy that blocks unauthorized outbound sockets and redacts PII/credentials (credit cards, API keys, passwords).
-* Pairs with **`flowforge`** ([`enterprise-ai-integration-platform`](https://github.com/AAH20/enterprise-ai-integration-platform)) to execute dry-run transaction simulations against SAP S/4HANA, Salesforce CRM, and Oracle ERP, guaranteeing non-destructive rollback safety.
+* Provides an in-process proxy that flags a payload whose destination string is not on a hardcoded sovereign allowlist and regex-redacts PII/credentials (credit cards, email addresses, JWT/bearer tokens, cloud API keys, private-key headers). It does not intercept OS-level sockets and does not redact passwords.
+* Includes a self-contained `FlowForgeSimulationReplayAdapter` that returns an in-memory dry-run record with `rollback_guaranteed=True`; it does not contact SAP S/4HANA, Salesforce CRM, or Oracle ERP. Integration with **`flowforge`** ([`enterprise-ai-integration-platform`](https://github.com/AAH20/enterprise-ai-integration-platform)) is roadmap.
 
 ### 5. Pan-Asia Regulatory Compliance Matrix
 * Built-in jurisdictional scoring for the 5 dominant Asian regulatory frameworks:
@@ -111,7 +111,7 @@ python3 -m apex_capitalmatrix.cli --help
 ## Command-Line Interface (CLI)
 
 ```bash
-# 1. Benchmark GPU hardware saturation and Model FLOPs Utilization (MFU)
+# 1. Run a local synthetic MFU benchmark (CPU loop; no GPU is exercised)
 capitalmatrix benchmark --arch GB200_NVL72 --iterations 10
 
 # 2. Run complete Capital Connect VC due diligence audit
@@ -120,7 +120,7 @@ capitalmatrix audit-vc --startup "Apex Growth Systems LLC" --arr 25000000 --ebit
 # 3. Verify Asian Enterprise Connect air-gap PoC and synthetic ERP simulation
 capitalmatrix poc-verify --startup "Apex Growth Systems LLC" --client "Singtel Enterprise Asia"
 
-# 4. View Kubernetes GPU FinOps cluster spend telemetry
+# 4. View local GPU FinOps spend telemetry (in-process log, no cluster connection)
 capitalmatrix finops
 
 # 5. Output executive markdown diligence memo
@@ -166,21 +166,21 @@ print(f"Pan-Asia Matrix   : {'5/5 PASSED' if cert.pan_asia_compliance.all_passed
 
 ## Ecosystem Synergies
 
-`Apex_CapitalMatrix` natively interlocks with the **`AAH20`** institutional portfolio:
+`Apex_CapitalMatrix` ships local, in-memory adapter stubs named after the **`AAH20`** institutional portfolio. None of them make network calls or import those projects — the integrations below are roadmap:
 
-* **[`enterprise-ai-production-control-plane`](https://github.com/AAH20/enterprise-ai-production-control-plane)** (`aicontrol`): Native Kubernetes GPU FinOps telemetry and multicloud inference routing.
-* **[`enterprise-ai-integration-platform`](https://github.com/AAH20/enterprise-ai-integration-platform)** (`flowforge`): Non-destructive transactional simulation replay for SAP S/4HANA, Salesforce CRM, and Oracle ERP.
-* **[`apex-treecompute`](https://github.com/AAH20/apex-treecompute)**: Sub-millisecond Test-Time Compute (TTC) & Tree-GRPO scaling engine for reasoning agents.
-* **`project-atlas-due-diligence` & `tech-balance-sheet`**: Foundational ASC 606 revenue recognition and compute balance sheet liability models.
-* **Cloudflare Clef**: Sub-100µs edge consensus replicating diligence packets across 330+ locations.
-* **Hermes Paperclip**: Company OS micro-USD budget governance with SHA-256 `ActionLedger` receipts.
-* **NVIDIA Aerial 6G**: Sub-5ms URLLC latency decision telemetry for edge telecom clusters.
+* **[`enterprise-ai-production-control-plane`](https://github.com/AAH20/enterprise-ai-production-control-plane)** (`aicontrol`): Local `ControlPlaneFinOpsAdapter` that logs caller-supplied GPU allocations and sums spend; no cluster connection or inference routing.
+* **[`enterprise-ai-integration-platform`](https://github.com/AAH20/enterprise-ai-integration-platform)** (`flowforge`): Local `FlowForgeSimulationReplayAdapter` returning an in-memory dry-run record; does not contact SAP/Oracle/Salesforce.
+* **[`apex-treecompute`](https://github.com/AAH20/apex-treecompute)**: Not integrated — reference only.
+* **`project-atlas-due-diligence` & `tech-balance-sheet`**: Reference only — the ASC 606 and lease-liability formulas are re-implemented locally; no code is imported.
+* **Cloudflare Clef**: Local `ClefEdgeReplicator` storing packets in a Python dict and returning a hardcoded `COMMITTED_SUB_100US` status label; no edge network or consensus.
+* **Hermes Paperclip**: Self-contained `PaperclipBudgetGovernor` micro-USD budget governance with SHA-256 `ActionLedger` receipts; no `@paperclipai/hermes-paperclip-adapter` dependency.
+* **NVIDIA Aerial 6G**: Local `Aerial6GConnector` that checks a caller-supplied latency against a 5ms SLA threshold; does not connect to the Aerial 6G SDK, TensorRT-LLM, or NIM.
 
 ---
 
 ## Test Suite Execution
 
-All 19 unit and integration tests run deterministically in **0.028s** with zero external dependencies:
+All 19 unit and integration tests pass with zero external dependencies (the runtime varies by machine — no fixed timing is guaranteed):
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -207,7 +207,7 @@ test_pan_asia_compliance_full_pass ... ok
 test_paperclip_budget_governor_deductions_and_exhaustion ... ok
 test_synthetic_benchmark_execution ... ok
 
-Ran 19 tests in 0.028s (OK)
+Ran 19 tests (OK)
 ```
 
 ---

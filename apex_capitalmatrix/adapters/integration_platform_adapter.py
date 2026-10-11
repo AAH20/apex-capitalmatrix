@@ -1,8 +1,8 @@
-"""Enterprise AI Integration Platform Adapter ('flowforge').
+"""FlowForge ERP Simulation Replay Adapter ('flowforge'; local, in-memory stub).
 
-Native integration with 'https://github.com/AAH20/enterprise-ai-integration-platform'.
-Provides durable ERP/CRM transactional simulation replay safety across
-SAP S/4HANA, Salesforce CRM, and Oracle ERP in sandboxed customer pilots.
+Local, in-memory adapter named after 'https://github.com/AAH20/enterprise-ai-integration-platform'.
+Models ERP/CRM transactional dry-run safety for SAP S/4HANA, Salesforce CRM, and Oracle ERP;
+no systems are contacted and no code is imported (integration is roadmap).
 Zero external dependencies (pure Python 3.9+ standard library only).
 """
 

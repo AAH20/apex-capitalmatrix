@@ -1,7 +1,8 @@
 """FinOps Atlas Actuary & GPU Lease Liability Auditor.
 
-Integrates the GAAP ASC 606 revenue audit models from 'project-atlas-due-diligence'
-and the compute lease liability models from 'tech-balance-sheet' & 'ma_vdr_diligence_os'.
+Re-implements GAAP ASC 606-style revenue reconciliation and compute lease liability
+formulas locally; 'project-atlas-due-diligence', 'tech-balance-sheet', and
+'ma_vdr_diligence_os' are referenced by name only (no code is imported).
 Evaluates True Token-per-Dollar, unabsorbed GPU lease drag, and EBITDA valuation haircuts.
 Zero external dependencies (pure Python 3.9+ standard library only).
 """

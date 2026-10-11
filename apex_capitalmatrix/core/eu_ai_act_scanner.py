@@ -1,7 +1,7 @@
 """EU AI Act & Open-Source IP License Contamination Scanner.
 
 Engineered for European VC Alliance due diligence under NVIDIA Inception Capital Connect.
-Audits EU AI Act compliance (Articles 50, 52, 53), GPAI transparency, carbon telemetry,
+Audits EU AI Act compliance (Articles 50 and 53), GPAI transparency, carbon telemetry,
 and detects viral copyleft licenses (AGPL/GPL) that jeopardize commercial enterprise IP.
 Zero external dependencies (pure Python 3.9+ standard library only).
 """

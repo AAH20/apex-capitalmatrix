@@ -1,8 +1,9 @@
 """Zero-Egress Sovereign Air-Gap Proxy & PII Leakage Interceptor.
 
 Engineered for Asian Enterprise Connect pilots (Japan, Singapore, GCC, South Korea, India).
-Guarantees zero outbound data egress from customer on-premise or sovereign VPC enclaves.
-Isolates enterprise credentials and verifies PII/token containment.
+Flags payloads whose destination string is not on a hardcoded sovereign allowlist and
+regex-redacts PII/token patterns. This is a string/text-level check; it does not
+intercept OS-level sockets or DNS.
 Zero external dependencies (pure Python 3.9+ standard library only).
 """
 
