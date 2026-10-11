@@ -71,6 +71,7 @@ class MFUMetrics:
     memory_bandwidth_utilization_pct: float
     wrapper_suspicion_score: float  # 0.0 (Pure Deep Tech) to 1.0 (API Wrapper)
     is_deep_tech_verified: bool
+    simulated: bool = False  # True when figures derive from a synthetic profile, not a GPU measurement
 
 
 @dataclass

@@ -143,16 +143,22 @@ class HardwareSaturationVerifier:
         arch: GpuArchitecture = GpuArchitecture.H100_SXM5,
         iterations: int = 10,
     ) -> MFUMetrics:
-        """Executes a sub-millisecond local synthetic benchmark loop."""
+        """Produce a SIMULATED inference profile from a local CPU timing loop.
+
+        This does NOT measure GPU throughput. It times a trivial pure-Python
+        math loop and maps that wall-clock time onto a synthetic token rate;
+        the resulting TFLOPS / MFU / throughput figures are illustrative only
+        and must not be read as hardware measurements.
+        """
         start = time.perf_counter()
         acc = 0.0
         for i in range(iterations * 1000):
             acc += math.sin(i) * math.cos(i)
         elapsed_ms = (time.perf_counter() - start) * 1000.0
 
-        # Map execution speed to simulated high-performance inference profile
+        # Map local loop speed onto a SYNTHETIC token rate (not a GPU measurement)
         simulated_tokens_sec = max(1800.0, 3200.0 - (elapsed_ms * 15.0))
-        return self.verify_workload(
+        metrics = self.verify_workload(
             arch=arch,
             model_params_billions=70.0,
             batch_size=32,
@@ -160,3 +166,5 @@ class HardwareSaturationVerifier:
             kv_cache_hit_rate=0.892,
             reported_http_latency_jitter_ms=2.4,
         )
+        metrics.simulated = True
+        return metrics

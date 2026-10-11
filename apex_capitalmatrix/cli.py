@@ -62,14 +62,14 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     if args.command == "benchmark":
         arch_enum = GpuArchitecture(args.arch)
-        print(f"Executing Hardware Saturation Benchmark on {arch_enum.value}...")
+        print(f"Executing hardware saturation benchmark on {arch_enum.value}...")
         metrics = orchestrator.hardware_verifier.run_synthetic_benchmark(arch=arch_enum, iterations=args.iterations)
-        print("Hardware Benchmark Results:")
-        print(f"  Achieved TFLOPS     : {metrics.achieved_tflops} TFLOPS")
-        print(f"  Theoretical TFLOPS  : {metrics.theoretical_tflops} TFLOPS")
-        print(f"  MFU Percentage      : {metrics.mfu_percentage}%")
-        print(f"  Throughput          : {metrics.tokens_per_second} tokens/sec")
-        print(f"  Token Economics     : {metrics.tokens_per_dollar} tokens/USD")
+        print("Hardware Benchmark Results [SIMULATED — synthetic model, NOT a GPU measurement]:")
+        print(f"  Achieved TFLOPS     : {metrics.achieved_tflops} TFLOPS (derived from simulated token rate)")
+        print(f"  Theoretical TFLOPS  : {metrics.theoretical_tflops} TFLOPS (spec sheet, not measured)")
+        print(f"  MFU Percentage      : {metrics.mfu_percentage}% (derived from simulated token rate)")
+        print(f"  Throughput          : {metrics.tokens_per_second} tokens/sec (SIMULATED, not measured)")
+        print(f"  Token Economics     : {metrics.tokens_per_dollar} tokens/USD (derived from simulated throughput)")
         print(f"  Wrapper Suspicion   : {metrics.wrapper_suspicion_score} / 1.0 (Deep Tech: {metrics.is_deep_tech_verified})")
         return 0
 
@@ -84,7 +84,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         print(f"Capital Connect Diligence Completed: [{packet.packet_id}]")
         print(f"  Startup Name        : {packet.startup_name}")
         print(f"  VC Readiness Score  : {packet.vc_readiness_score} / 100.0")
-        print(f"  Achieved MFU        : {packet.mfu_metrics.mfu_percentage}%")
+        print(f"  Achieved MFU        : {packet.mfu_metrics.mfu_percentage}% (SIMULATED)")
         print(f"  Reconciled ARR      : ${packet.atlas_finops.gaap_asc_606_reconciled_arr_usd:,.2f}")
         print(f"  GPU Lease Drag      : ${packet.atlas_finops.unabsorbed_gpu_lease_drag_usd:,.2f}")
         print(f"  Adjusted EBITDA     : ${packet.atlas_finops.adjusted_ebitda_usd:,.2f} (Haircut: {packet.atlas_finops.ebitda_haircut_pct}%)")
